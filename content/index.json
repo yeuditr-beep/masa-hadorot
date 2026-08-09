@@ -49,7 +49,12 @@
         { "id": "part-c-ch-08", "chapter": 8, "title": "כתיבת המשנה", "status": "ready", "file": "content/part-c/chapter-08.json" },
         { "id": "part-c-ch-09", "chapter": 9, "title": "דור המעבר: מתנאים לאמוראים", "status": "ready", "file": "content/part-c/chapter-09.json" },
         { "id": "part-c-ch-10", "chapter": 10, "title": "פיזורה של סמכות התורה", "status": "ready", "file": "content/part-c/chapter-10.json" },
-        { "id": "part-c-ch-11", "chapter": 11, "title": "דורות האמוראים: רבי יוחנן וריש לקיש", "status": "ready", "file": "content/part-c/chapter-11.json" }
+        { "id": "part-c-ch-11", "chapter": 11, "title": "דורות האמוראים: רבי יוחנן וריש לקיש", "status": "ready", "file": "content/part-c/chapter-11.json" },
+        { "id": "part-c-ch-12", "chapter": 12, "title": "הדור השלישי והרביעי של האמוראים בארץ ישראל", "status": "ready", "file": "content/part-c/chapter-12.json" },
+        { "id": "part-c-ch-13", "chapter": 13, "title": "האמוראים הבאים בארץ ישראל", "status": "ready", "file": "content/part-c/chapter-13.json" },
+        { "id": "part-c-ch-14", "chapter": 14, "title": "חכמי בבל ודורות האמוראים", "status": "ready", "file": "content/part-c/chapter-14.json" },
+        { "id": "part-c-ch-15", "chapter": 15, "title": "סיום התלמוד הבבלי", "status": "ready", "file": "content/part-c/chapter-15.json" },
+        { "id": "part-c-ch-16", "chapter": 16, "title": "המורשת — בנייה של עם על בסיס תורה", "status": "ready", "file": "content/part-c/chapter-16.json" }
       ]
     }
   ]
