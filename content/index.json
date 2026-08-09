@@ -1,0 +1,56 @@
+{
+  "site": "מסע הדורות",
+  "tagline": "מסע בהיסטוריה של עם ישראל — מהשופטים ועד חתימת התלמוד",
+  "parts": [
+    {
+      "id": "part-a",
+      "letter": "א",
+      "title": "השופטים, המלכים והנביאים",
+      "subtitle": "מן הכיבוש ועד גלות בבל",
+      "slides_total": 51,
+      "chapters": [
+        { "id": "part-a-ch-01", "chapter": 1, "title": "השופטים", "status": "soon" }
+      ]
+    },
+    {
+      "id": "part-b",
+      "letter": "ב",
+      "title": "תקופת בית שני",
+      "subtitle": "מהבנייה לחורבן",
+      "slides_total": 215,
+      "chapters": [
+        { "id": "part-b-ch-01", "chapter": 1, "title": "שיבת ציון וניסיון הבנייה", "status": "ready", "file": "content/part-b/chapter-01.json" },
+        { "id": "part-b-ch-02", "chapter": 2, "title": "אנשי כנסת הגדולה", "status": "ready", "file": "content/part-b/chapter-02.json" },
+        { "id": "part-b-ch-03", "chapter": 3, "title": "אלכסנדר מוקדון ודמות שמעון הצדיק", "status": "ready", "file": "content/part-b/chapter-03.json" },
+        { "id": "part-b-ch-04", "chapter": 4, "title": "ארץ ישראל תחת היוונים", "status": "ready", "file": "content/part-b/chapter-04.json" },
+        { "id": "part-b-ch-05", "chapter": 5, "title": "שלטון החשמונאים", "status": "ready", "file": "content/part-b/chapter-05.json" },
+        { "id": "part-b-ch-06", "chapter": 6, "title": "מלחמת האחים", "status": "ready", "file": "content/part-b/chapter-06.json" },
+        { "id": "part-b-ch-07", "chapter": 7, "title": "שלטונו של הורדוס", "status": "ready", "file": "content/part-b/chapter-07.json" },
+        { "id": "part-b-ch-08", "chapter": 8, "title": "הלל הזקן — האור שבלב הסערה", "status": "ready", "file": "content/part-b/chapter-08.json" },
+        { "id": "part-b-ch-09", "chapter": 9, "title": "שליטים חדשים ביהודה", "status": "ready", "file": "content/part-b/chapter-09.json" },
+        { "id": "part-b-ch-10", "chapter": 10, "title": "התחלת המרד וחורבן המקדש", "status": "ready", "file": "content/part-b/chapter-10.json" },
+        { "id": "part-b-ch-11", "chapter": 11, "title": "החורבן — שריפת בית המקדש", "status": "ready", "file": "content/part-b/chapter-11.json" }
+      ]
+    },
+    {
+      "id": "part-c",
+      "letter": "ג",
+      "title": "מיבנה עד סוף תקופת האמוראים",
+      "subtitle": "המשנה, התלמוד וחכמי הדורות",
+      "slides_total": 247,
+      "chapters": [
+        { "id": "part-c-ch-01", "chapter": 1, "title": "יבנה — שיקום החיים היהודיים", "status": "ready", "file": "content/part-c/chapter-01.json" },
+        { "id": "part-c-ch-02", "chapter": 2, "title": "רבן גמליאל דיבנה", "status": "ready", "file": "content/part-c/chapter-02.json" },
+        { "id": "part-c-ch-03", "chapter": 3, "title": "מדומיטיינוס עד לוד", "status": "ready", "file": "content/part-c/chapter-03.json" },
+        { "id": "part-c-ch-04", "chapter": 4, "title": "מרד בר כוכבא וגזירות השמד", "status": "ready", "file": "content/part-c/chapter-04.json" },
+        { "id": "part-c-ch-05", "chapter": 5, "title": "עשרת הרוגי מלכות וההבראה", "status": "ready", "file": "content/part-c/chapter-05.json" },
+        { "id": "part-c-ch-06", "chapter": 6, "title": "אושא: הסנהדרין קמה לתחייה", "status": "ready", "file": "content/part-c/chapter-06.json" },
+        { "id": "part-c-ch-07", "chapter": 7, "title": "רבי יהודה הנשיא: \"רבנו הקדוש\"", "status": "ready", "file": "content/part-c/chapter-07.json" },
+        { "id": "part-c-ch-08", "chapter": 8, "title": "כתיבת המשנה", "status": "ready", "file": "content/part-c/chapter-08.json" },
+        { "id": "part-c-ch-09", "chapter": 9, "title": "דור המעבר: מתנאים לאמוראים", "status": "ready", "file": "content/part-c/chapter-09.json" },
+        { "id": "part-c-ch-10", "chapter": 10, "title": "פיזורה של סמכות התורה", "status": "ready", "file": "content/part-c/chapter-10.json" },
+        { "id": "part-c-ch-11", "chapter": 11, "title": "דורות האמוראים: רבי יוחנן וריש לקיש", "status": "ready", "file": "content/part-c/chapter-11.json" }
+      ]
+    }
+  ]
+}

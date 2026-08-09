@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מסע הדורות — פרק</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;800;900&display=swap');
+  :root {
+    --navy:#0d1b2e; --navy2:#16263e; --gold:#b0862f; --gold-l:#e8c46a;
+    --paper:#faf6ee; --paper2:#f3ecdd; --line:#e2d7bf; --ink:#1a2438; --ink2:#2c3a52; --muted:#8a7b5c;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Heebo','Segoe UI',Arial,sans-serif; background:var(--paper); color:var(--ink); }
+
+  header.top {
+    position:sticky; top:0; z-index:50; background:rgba(13,27,46,.96); color:#fff;
+    display:flex; align-items:center; gap:18px; padding:10px 26px; backdrop-filter:blur(6px);
+  }
+  header.top .brand { font-weight:900; color:var(--gold-l); font-size:18px; white-space:nowrap; text-decoration:none; }
+  header.top .crumb { font-size:14.5px; opacity:.85; }
+  header.top .spacer { flex:1; }
+  header.top button {
+    font-family:inherit; font-size:14px; background:var(--gold); color:#fff; border:none;
+    padding:8px 16px; border-radius:20px; cursor:pointer; font-weight:600;
+  }
+  header.top button:hover { background:#c99a3e; }
+
+  .hero { position:relative; max-height:62vh; overflow:hidden; display:flex; align-items:center; justify-content:center; background:var(--navy); }
+  .hero img { width:100%; max-width:1200px; display:block; }
+
+  .wrap { max-width:1100px; margin:0 auto; padding:0 22px; }
+
+  .journey { background:var(--paper2); border-bottom:1px solid var(--line); padding:26px 0 30px; }
+  .journey h2 { text-align:center; font-size:16px; color:var(--muted); font-weight:600; letter-spacing:1px; margin-bottom:18px; }
+  .stations { display:flex; justify-content:center; gap:0; flex-wrap:wrap; }
+  .station { display:flex; align-items:center; }
+  .station a {
+    display:flex; flex-direction:column; align-items:center; gap:8px; text-decoration:none; color:var(--ink2);
+    padding:0 14px; min-width:120px;
+  }
+  .station .dot { width:18px; height:18px; border-radius:50%; background:#fff; border:4px solid var(--gold); transition:.2s; }
+  .station a:hover .dot { background:var(--gold); transform:scale(1.15); }
+  .station .lbl { font-size:14px; font-weight:600; text-align:center; max-width:150px; line-height:1.35; }
+  .station .connect { width:44px; height:3px; background:var(--gold); opacity:.45; margin-top:-30px; }
+  @media (max-width:760px){ .station .connect { display:none; } .stations { gap:10px; } }
+
+  section.block { padding:30px 0 6px; }
+  section.block > .wrap > h2 {
+    font-size:27px; font-weight:900; color:var(--navy); margin-bottom:6px;
+    display:flex; align-items:center; gap:14px;
+  }
+  section.block > .wrap > h2::after { content:''; flex:1; height:2px; background:linear-gradient(to left, var(--gold), transparent); }
+
+  .slide-row { display:grid; grid-template-columns: 1.15fr .85fr; gap:22px; align-items:start; margin:20px 0 30px;
+    opacity:0; transform:translateY(26px); transition:opacity .55s ease, transform .55s ease; }
+  .slide-row.in { opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce) { .slide-row { opacity:1; transform:none; transition:none; } }
+  .slide-row.flip { grid-template-columns: .85fr 1.15fr; }
+  .slide-row.flip .imgbox { order:2; }
+  @media (max-width:820px){ .slide-row, .slide-row.flip { grid-template-columns:1fr; } .slide-row.flip .imgbox { order:0; } }
+  .imgbox { position:relative; border-radius:14px; overflow:hidden; box-shadow:0 6px 22px rgba(13,27,46,.16); cursor:zoom-in; }
+  .imgbox img { width:100%; display:block; }
+  .imgbox .num { position:absolute; top:10px; left:10px; background:rgba(13,27,46,.8); color:var(--gold-l); font-size:12px; padding:4px 10px; border-radius:14px; }
+  .txtbox h3 { font-size:21px; font-weight:800; color:var(--navy); margin-bottom:10px; }
+  .txtbox p { font-size:16.5px; line-height:1.85; color:var(--ink2); margin-bottom:10px; }
+  .txtbox .onimg { background:#fff; border-right:4px solid var(--gold); border-radius:8px; padding:10px 14px; font-size:14.5px; color:var(--muted); }
+  .figchips { margin-top:10px; }
+  .figchips a { display:inline-block; background:var(--navy); color:var(--gold-l); text-decoration:none; font-size:13.5px; border-radius:16px; padding:5px 13px; margin:3px 2px; transition:.15s; }
+  .figchips a:hover { background:var(--gold); color:#fff; }
+
+  /* fixed side rail */
+  .rail { position:fixed; top:50%; transform:translateY(-50%); right:14px; z-index:40; display:none; flex-direction:column; gap:4px; }
+  @media (min-width:1360px){ .rail { display:flex; } }
+  .rail a { display:flex; align-items:center; gap:9px; text-decoration:none; padding:5px 4px; }
+  .rail .rdot { width:12px; height:12px; border-radius:50%; border:3px solid var(--gold); background:#fff; flex-shrink:0; transition:.2s; }
+  .rail a.active .rdot { background:var(--gold); transform:scale(1.25); }
+  .rail .rlbl { font-size:12.5px; color:var(--muted); max-width:120px; line-height:1.25; opacity:0; transform:translateX(6px); transition:.2s; }
+  .rail:hover .rlbl, .rail a.active .rlbl { opacity:1; transform:none; }
+  .rail a.active .rlbl { color:var(--navy); font-weight:700; }
+
+  /* floating chapter nav */
+  .chapnav { display:flex; justify-content:space-between; align-items:center; gap:12px; padding:20px 0 10px; margin-top:40px; border-top:1px solid var(--line); flex-wrap:wrap; }
+  .chapnav a { display:flex; align-items:center; gap:8px; text-decoration:none; padding:10px 16px; border-radius:8px; font-size:14.5px; font-weight:600; transition:.2s; white-space:nowrap; }
+  .chapnav a:not(.dis) { background:var(--navy); color:var(--gold-l); cursor:pointer; }
+  .chapnav a:not(.dis):hover { background:var(--gold); color:#fff; box-shadow:0 4px 14px rgba(176,134,47,.3); }
+  .chapnav a.dis { display:none; }
+  @media (max-width:620px) { .chapnav { gap:8px; padding:16px 0 8px; } .chapnav a { padding:8px 12px; font-size:13.5px; } }
+
+  .figures-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(240px, 1fr)); gap:18px; margin:26px 0 10px; }
+  .fig-card { display:block; text-decoration:none; color:var(--ink); background:#fff; border-radius:14px; padding:20px; box-shadow:0 2px 12px rgba(13,27,46,.08); border-top:4px solid var(--gold); transition:.15s; }
+  a.fig-card:hover { transform:translateY(-3px); box-shadow:0 8px 22px rgba(13,27,46,.14); }
+  .fig-card h3 { font-size:19px; font-weight:800; color:var(--navy); }
+  .fig-card .role { font-size:13.5px; color:var(--gold); font-weight:600; margin-bottom:8px; }
+  .fig-card p { font-size:14.5px; line-height:1.7; color:var(--ink2); }
+  .fig-card .lesson { margin-top:10px; font-size:13.5px; background:var(--paper2); border-radius:8px; padding:8px 12px; color:var(--muted); }
+
+  .quiz { background:var(--navy); color:#fff; margin-top:50px; padding:46px 0 56px; }
+  .quiz h2 { font-size:26px; font-weight:900; color:var(--gold-l); margin-bottom:4px; }
+  .quiz .sub { opacity:.75; margin-bottom:24px; font-size:15px; }
+  .q-card { background:var(--navy2); border-radius:14px; padding:20px 22px; margin-bottom:14px; }
+  .q-card .qt { font-size:16.5px; font-weight:700; margin-bottom:12px; }
+  .q-card .opts { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:9px; }
+  .q-card button.opt {
+    font-family:inherit; font-size:14.5px; text-align:right; padding:10px 14px; border-radius:9px;
+    border:1px solid rgba(232,196,106,.35); background:transparent; color:#fff; cursor:pointer; transition:.15s;
+  }
+  .q-card button.opt:hover:not(:disabled) { background:rgba(232,196,106,.15); }
+  .q-card button.opt.correct { background:#2e7d4f; border-color:#2e7d4f; }
+  .q-card button.opt.wrong { background:#a33c3c; border-color:#a33c3c; }
+  .q-card .explain { display:none; margin-top:11px; font-size:14px; color:var(--gold-l); line-height:1.65; }
+  .score { text-align:center; font-size:20px; font-weight:800; color:var(--gold-l); margin-top:18px; min-height:30px; }
+
+  footer { text-align:center; padding:26px; font-size:13.5px; color:var(--muted); background:var(--paper2); }
+
+  .lb { position:fixed; inset:0; background:rgba(8,14,24,.97); z-index:100; display:none; align-items:center; justify-content:center; flex-direction:column; }
+  .lb.open { display:flex; }
+  .lb img { max-width:96vw; max-height:88vh; border-radius:6px; }
+  .lb .bar { color:#c9b98f; font-size:14px; margin-top:12px; display:flex; gap:24px; align-items:center; }
+  .lb .bar button { font-family:inherit; background:none; border:1px solid #c9b98f; color:#c9b98f; border-radius:16px; padding:5px 16px; cursor:pointer; font-size:14px; }
+  .lb .bar button:hover { background:rgba(201,185,143,.15); }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="index.html">מסע הדורות</a>
+  <span class="crumb" id="crumb"></span>
+  <span class="spacer"></span>
+  <button onclick="openPresenter(0)">🎬 מצב מרצה</button>
+</header>
+
+<div class="hero"><img id="hero-img" alt=""></div>
+
+<nav class="journey">
+  <h2>מסלול הפרק</h2>
+  <div class="stations" id="stations"></div>
+</nav>
+
+<nav class="rail" id="rail"></nav>
+
+<main id="main"></main>
+
+<section class="block" id="figures-sec">
+  <div class="wrap">
+    <h2>דמויות הפרק</h2>
+    <div class="figures-grid" id="figures"></div>
+  </div>
+</section>
+
+<section class="quiz" id="quiz-sec">
+  <div class="wrap">
+    <h2>חידון הפרק</h2>
+    <div class="sub" id="quiz-sub"></div>
+    <div id="quiz"></div>
+    <div class="score" id="score"></div>
+  </div>
+</section>
+
+<div class="wrap"><div class="chapnav" id="chapnav"></div></div>
+
+<footer id="foot"></footer>
+
+<div class="lb" id="lb">
+  <img id="lb-img" alt="">
+  <div class="bar">
+    <button onclick="lbNav(1)">◀ הבא</button>
+    <span id="lb-cap"></span>
+    <button onclick="lbNav(-1)">הקודם ▶</button>
+    <button onclick="closeLb()">✕ סגירה</button>
+  </div>
+</div>
+
+<script>
+let CH = null, SLIDES = [], FIGMAP = {};
+let answered = 0, correct = 0, lbIdx = 0;
+
+async function boot() {
+  const hash = (location.hash || '').replace('#','');
+  const id = (hash.startsWith('part-') ? hash : '') || new URLSearchParams(location.search).get('id') || 'part-b-ch-05';
+  const site = await (await fetch('content/index.json')).json();
+  const chapters = site.parts.flatMap(p => p.chapters.map(c => ({...c, partTitle: p.title, partLetter: p.letter})));
+  const meta = chapters.find(c => c.id === id && c.status === 'ready');
+  if (!meta) { document.getElementById('crumb').textContent = 'הפרק לא נמצא'; return; }
+  const [chData, figData] = await Promise.all([
+    (await fetch(meta.file)).json(),
+    (await fetch('content/figures.json')).json()
+  ]);
+  CH = chData;
+  const FIGS = figData.figures;
+
+  document.title = `פרק ${heLetter(CH.chapter)}' — ${CH.title} | מסע הדורות`;
+  document.getElementById('crumb').innerHTML = `חלק ${CH.part}' · ${meta.partTitle} ← <b>פרק ${heLetter(CH.chapter)}' — ${CH.title}</b>`;
+  document.getElementById('foot').textContent = `נבנה משכבת הנתונים של הפרק (שקפים ${CH.slides_range[0]}–${CH.slides_range[1]}) · מסע הדורות`;
+
+  const opener = CH.slides.find(s => s.type === 'chapter-opener');
+  const content = CH.slides.filter(s => s.type !== 'chapter-opener');
+  SLIDES = CH.slides.map(s => s.n);
+  FIGS.forEach(f => FIGMAP[f.id] = f);
+  const chapterFigIds = [...new Set(CH.slides.flatMap(s => s.figures || []))];
+  if (opener) { const h = document.getElementById('hero-img'); h.src = opener.image; h.alt = opener.title; }
+
+  document.getElementById('stations').innerHTML = CH.stations.map((s,i) => `
+    <div class="station">
+      <a href="#st-${s.id}"><span class="dot"></span><span class="lbl">${s.title}</span></a>
+      ${i < CH.stations.length-1 ? '<span class="connect"></span>' : ''}
+    </div>`).join('');
+
+  let flip = false;
+  document.getElementById('main').innerHTML = CH.stations.map(st => `
+    <section class="block" id="st-${st.id}">
+      <div class="wrap">
+        <h2>${st.title}</h2>
+        ${st.slides.map(n => {
+          const s = content.find(x => x.n === n); if (!s) return '';
+          flip = !flip;
+          const figs = (s.figures||[]).map(fid => FIGMAP[fid]).filter(Boolean);
+          return `
+          <div class="slide-row${flip?'':' flip'}">
+            <div class="imgbox" onclick="openPresenter(${SLIDES.indexOf(n)})">
+              <img loading="lazy" src="${s.image}" alt="${s.title}">
+              <span class="num">שקף ${s.n}</span>
+            </div>
+            <div class="txtbox">
+              <h3>${s.title}</h3>
+              <p>${s.narration || ''}</p>
+              ${s.on_image ? `<div class="onimg">${s.on_image}</div>` : ''}
+              ${figs.length ? `<div class="figchips">${figs.map(f=>`<a href="figure.html#${f.id}">👤 ${f.name}</a>`).join('')}</div>` : ''}
+            </div>
+          </div>`; }).join('')}
+      </div>
+    </section>`).join('');
+
+  document.getElementById('figures').innerHTML = chapterFigIds.map(fid => {
+    const f = FIGMAP[fid]; if (!f) return '';
+    return `
+    <a class="fig-card" href="figure.html#${f.id}">
+      <h3>${f.name}</h3>
+      <div class="role">${f.role}${f.dynasty ? ' · ' + f.dynasty : ''}</div>
+      <p>${f.summary}</p>
+      <div class="lesson">💡 ${f.lesson}</div>
+    </a>`; }).join('');
+
+  /* side rail + scroll spy + entrance animations */
+  document.getElementById('rail').innerHTML = CH.stations.map(s =>
+    `<a href="#st-${s.id}" data-st="st-${s.id}"><span class="rdot"></span><span class="rlbl">${s.title}</span></a>`).join('');
+  const railLinks = [...document.querySelectorAll('.rail a')];
+  const spy = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) railLinks.forEach(a => a.classList.toggle('active', a.dataset.st === e.target.id));
+  }), { rootMargin: '-30% 0px -55% 0px' });
+  CH.stations.forEach(s => { const el = document.getElementById('st-'+s.id); if (el) spy.observe(el); });
+  const reveal = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); reveal.unobserve(e.target); }
+  }), { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.slide-row').forEach(r => reveal.observe(r));
+  setTimeout(() => { if (!document.querySelector('.slide-row.in'))
+    document.querySelectorAll('.slide-row').forEach(r => r.classList.add('in')); }, 1200);
+
+  document.getElementById('quiz-sub').textContent = `${CH.quiz.length} שאלות · בסיום מוצג הניקוד`;
+  document.getElementById('quiz').innerHTML = CH.quiz.map((q,qi) => `
+    <div class="q-card" id="q${qi}">
+      <div class="qt">${qi+1}. ${q.q}</div>
+      <div class="opts">${q.options.map((o,oi)=>`<button class="opt" onclick="answer(${qi},${oi})">${o}</button>`).join('')}</div>
+      <div class="explain">${q.explain}</div>
+    </div>`).join('');
+
+  const readyList = chapters.filter(c => c.status === 'ready');
+  const pos = readyList.findIndex(c => c.id === id);
+  const prev = pos > 0 ? readyList[pos-1] : null;
+  const next = pos < readyList.length-1 ? readyList[pos+1] : null;
+  document.getElementById('chapnav').innerHTML = `
+    ${prev ? `<a href="chapter.html#${prev.id}" onclick="setTimeout(()=>location.reload())">→ פרק קודם: ${prev.title}</a>` : '<a class="dis"></a>'}
+    <a href="index.html">🗺️ מפת המסע</a>
+    ${next ? `<a href="chapter.html#${next.id}" onclick="setTimeout(()=>location.reload())">פרק הבא: ${next.title} ←</a>` : '<a class="dis"></a>'}`;
+}
+
+function heLetter(n) { return ['','א','ב','ג','ד','ה','ו','ז','ח','ט','י'][n] || n; }
+
+function answer(qi, oi) {
+  const card = document.getElementById('q'+qi);
+  const btns = card.querySelectorAll('.opt');
+  if (btns[0].disabled) return;
+  const a = CH.quiz[qi].answer;
+  btns.forEach((b,i) => { b.disabled = true; if (i===a) b.classList.add('correct'); else if (i===oi) b.classList.add('wrong'); });
+  card.querySelector('.explain').style.display = 'block';
+  answered++; if (oi===a) correct++;
+  if (answered === CH.quiz.length) {
+    const s = document.getElementById('score');
+    s.textContent = `הניקוד שלך: ${correct} מתוך ${CH.quiz.length} ${correct>=9?'🏆 מצוין!':correct>=6?'👍 יפה מאוד':'📖 שווה חזרה על הפרק'}`;
+    s.scrollIntoView({behavior:'smooth', block:'center'});
+  }
+}
+
+function slideImg(n) { return CH.slides.find(s => s.n === n).image; }
+function openPresenter(i) { lbIdx = i; renderLb(); document.getElementById('lb').classList.add('open'); }
+function closeLb() { document.getElementById('lb').classList.remove('open'); }
+function lbNav(d) { lbIdx = (lbIdx + d + SLIDES.length) % SLIDES.length; renderLb(); }
+function renderLb() {
+  const n = SLIDES[lbIdx];
+  document.getElementById('lb-img').src = slideImg(n);
+  document.getElementById('lb-cap').textContent = `שקף ${n} · ${lbIdx+1}/${SLIDES.length}`;
+}
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lb').classList.contains('open')) return;
+  if (e.key === 'ArrowLeft') lbNav(1);
+  if (e.key === 'ArrowRight') lbNav(-1);
+  if (e.key === 'Escape') closeLb();
+});
+
+boot();
+</script>
+</body>
+</html>

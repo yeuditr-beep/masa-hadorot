@@ -1,0 +1,6 @@
+*.bat
+*.py
+*.docx
+content-backup-before-editorial-20260806/
+editorial-report-render/
+__pycache__/

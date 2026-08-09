@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מסע הדורות — מסע בהיסטוריה של עם ישראל</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;800;900&display=swap');
+  :root {
+    --navy:#0d1b2e; --navy2:#16263e; --gold:#b0862f; --gold-l:#e8c46a;
+    --paper:#faf6ee; --paper2:#f3ecdd; --line:#e2d7bf; --ink:#1a2438; --ink2:#2c3a52; --muted:#8a7b5c;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Heebo','Segoe UI',Arial,sans-serif; background:var(--navy); color:var(--ink); }
+
+  .hero {
+    min-height:46vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; color:#fff; padding:60px 20px 50px;
+    background:
+      radial-gradient(ellipse at 50% 120%, rgba(176,134,47,.35), transparent 60%),
+      radial-gradient(ellipse at 20% -10%, rgba(232,196,106,.12), transparent 50%),
+      var(--navy);
+  }
+  .hero .crown { font-size:40px; margin-bottom:14px; }
+  .hero h1 { font-size:52px; font-weight:900; color:var(--gold-l); letter-spacing:1px; }
+  .hero p { font-size:19px; opacity:.85; margin-top:10px; max-width:640px; line-height:1.6; }
+  .hero .cta {
+    margin-top:28px; display:inline-block; background:var(--gold); color:#fff; text-decoration:none;
+    font-size:19px; font-weight:800; padding:14px 44px; border-radius:32px; transition:.2s;
+    box-shadow:0 6px 24px rgba(176,134,47,.4);
+  }
+  .hero .cta:hover { background:#c99a3e; transform:translateY(-2px); }
+  .hero .cta2 {
+    margin-top:14px; display:inline-block; color:var(--gold-l); text-decoration:none;
+    font-size:15px; font-weight:600; padding:8px 22px; border:1px solid rgba(232,196,106,.5); border-radius:24px; transition:.2s;
+  }
+  .hero .cta2:hover { background:rgba(232,196,106,.12); }
+
+  .map { background:var(--paper); padding:56px 20px 70px; }
+  .map .wrap { max-width:860px; margin:0 auto; }
+  .map h2 { text-align:center; font-size:16px; color:var(--muted); font-weight:600; letter-spacing:2px; margin-bottom:40px; }
+
+  .part { position:relative; margin-bottom:14px; }
+  .part::before {
+    content:''; position:absolute; top:64px; bottom:-14px; right:31px; width:4px;
+    background:linear-gradient(var(--gold), rgba(176,134,47,.25)); border-radius:2px;
+  }
+  .part:last-child::before { display:none; }
+  .part-head { display:flex; align-items:center; gap:18px; margin-bottom:16px; }
+  .part-badge {
+    width:64px; height:64px; border-radius:50%; background:var(--navy); color:var(--gold-l);
+    display:flex; align-items:center; justify-content:center; font-size:27px; font-weight:900; flex-shrink:0;
+    border:3px solid var(--gold); z-index:1; position:relative;
+  }
+  .part-head h3 { font-size:23px; font-weight:900; color:var(--navy); }
+  .part-head .sub { font-size:14.5px; color:var(--muted); }
+
+  .chapters { margin-right:82px; display:grid; gap:10px; padding-bottom:26px; }
+  .chap {
+    display:flex; align-items:center; gap:14px; background:#fff; border:1px solid var(--line);
+    border-radius:12px; padding:13px 18px; text-decoration:none; color:var(--ink); transition:.15s;
+  }
+  a.chap:hover { border-color:var(--gold); box-shadow:0 4px 14px rgba(13,27,46,.1); transform:translateX(-3px); }
+  .chap .no {
+    width:34px; height:34px; border-radius:50%; background:var(--paper2); color:var(--gold);
+    display:flex; align-items:center; justify-content:center; font-weight:900; font-size:15px; flex-shrink:0;
+  }
+  .chap .t { font-weight:700; font-size:16.5px; flex:1; }
+  .chap .tag { font-size:12.5px; padding:4px 12px; border-radius:14px; font-weight:600; }
+  .chap.ready .tag { background:#e5f2e9; color:#2e7d4f; }
+  .chap.soon { opacity:.55; cursor:default; }
+  .chap.soon .tag { background:var(--paper2); color:var(--muted); }
+  .chap.empty { opacity:.55; font-size:14px; color:var(--muted); justify-content:center; }
+
+  footer { text-align:center; padding:24px; font-size:13.5px; color:rgba(255,255,255,.55); background:var(--navy); }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="crown">👑</div>
+  <h1>מסע הדורות</h1>
+  <p id="tagline">מסע בהיסטוריה של עם ישראל — מהשופטים ועד חתימת התלמוד</p>
+  <a class="cta" id="cta" href="#map">התחל ללמוד</a>
+  <a class="cta2" href="figures.html">👥 דמויות המסע</a>
+</div>
+
+<div class="map" id="map">
+  <div class="wrap">
+    <h2>· מפת המסע ·</h2>
+    <div id="parts"></div>
+  </div>
+</div>
+
+<footer>מסע הדורות · נבנה סביב מאות האינפוגרפיקות של סדרת "תולדות עם ישראל"</footer>
+
+<script>
+function heLetter(n) { return ['','א','ב','ג','ד','ה','ו','ז','ח','ט','י'][n] || n; }
+(async () => {
+  const site = await (await fetch('content/index.json')).json();
+  document.getElementById('tagline').textContent = site.tagline;
+  const firstReady = site.parts.flatMap(p=>p.chapters).find(c=>c.status==='ready');
+  if (firstReady) document.getElementById('cta').href = `chapter.html#${firstReady.id}`;
+  document.getElementById('parts').innerHTML = site.parts.map(p => `
+    <div class="part">
+      <div class="part-head">
+        <div class="part-badge">${p.letter}'</div>
+        <div>
+          <h3>${p.title}</h3>
+          <div class="sub">${p.subtitle} · ${p.slides_total} לוחות מסע</div>
+        </div>
+      </div>
+      <div class="chapters">
+        ${p.chapters.length ? p.chapters.map(c => c.status === 'ready'
+          ? `<a class="chap ready" href="chapter.html#${c.id}">
+               <span class="no">${heLetter(c.chapter)}'</span><span class="t">${c.title}</span><span class="tag">מוכן ללימוד</span></a>`
+          : `<div class="chap soon">
+               <span class="no">${heLetter(c.chapter)}'</span><span class="t">${c.title}</span><span class="tag">בהכנה</span></div>`
+        ).join('') : '<div class="chap empty">הפרקים בהכנה — בקרוב במסע</div>'}
+      </div>
+    </div>`).join('');
+})();
+</script>
+</body>
+</html>
