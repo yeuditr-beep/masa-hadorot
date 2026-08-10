@@ -58,7 +58,8 @@
       "n": 18,
       "type": "content",
       "title": "המבנה והסמכות של כנסת הגדולה",
-      "image": "assets/slides/part-b/slide-18.webp"
+      "image": "assets/slides/part-b/slide-18.webp",
+      "narration": "כנסת הגדולה הייתה מוסד עליון של 120 חכמים, שהוגדרו כ'קבל משה מסיני' — הם קיבלו את השלמות והתורה מסיני, והם היו הגורם המעביר של הסנהדרין הגבוה וממושלי ישראל."
     },
     {
       "n": 19,
@@ -71,7 +72,8 @@
       "n": 20,
       "type": "content",
       "title": "הקלט מהציבור",
-      "image": "assets/slides/part-b/slide-20.webp"
+      "image": "assets/slides/part-b/slide-20.webp",
+      "narration": "בעקבות הקריאה של התורה בשער המים, כל העם בכה בטוב לבב. הם זיהו את המורים שלהם — עזרא וכנסת הגדולה — כמחוקקים ודורים חדשים של תורה שישמרו על החוק."
     },
     {
       "n": 21,
@@ -98,7 +100,8 @@
       "n": 24,
       "type": "content",
       "title": "התוצאות של עבודת כנסת הגדולה",
-      "image": "assets/slides/part-b/slide-24.webp"
+      "image": "assets/slides/part-b/slide-24.webp",
+      "narration": "תוך מאות שנים, עבודת כנסת הגדולה גיבשה את יסודות הדת היהודית. קביעת התורה שבעל-פה, סדרי התפילה, התקנות וההלכות — הכל הפך לחלק בלתי נפרד מחיי ישראל."
     },
     {
       "n": 25,
@@ -114,25 +117,29 @@
       "n": 26,
       "type": "content",
       "title": "השפעת כנסת הגדולה על דור זה",
-      "image": "assets/slides/part-b/slide-26.webp"
+      "image": "assets/slides/part-b/slide-26.webp",
+      "narration": "בדור של כנסת הגדולה, העם היהודי קיבל תפקד חדש: לא רק עם פוליטי, אלא עם הקשור בתורה ובדתו. זה היה היסוד לכל ההמשך של תלמוד ודת יהודית."
     },
     {
       "n": 27,
       "type": "content",
       "title": "ההלכות והתקנות שנשמרו",
-      "image": "assets/slides/part-b/slide-27.webp"
+      "image": "assets/slides/part-b/slide-27.webp",
+      "narration": "התקנות שקבעו אנשי כנסת הגדולה נשמרו לדורות הבאים. קריאת התורה בימים קבועים, סדרי התפילה, ברכות על המצוות — הכל הפך להלכה שנשמרה בישראל לעד."
     },
     {
       "n": 28,
       "type": "content",
       "title": "ירושת המוסד לדורות הבאים",
-      "image": "assets/slides/part-b/slide-28.webp"
+      "image": "assets/slides/part-b/slide-28.webp",
+      "narration": "כנסת הגדולה לא נשמרה כמוסד לנצח, אך מורשתה חיה בתוך הסנהדרין והדורות הבאים של חכמים. משנה ותלמוד הם המשך ישיר של עבודתם."
     },
     {
       "n": 29,
       "type": "content",
       "title": "סיום התקופה ותחילת עידן חדש",
-      "image": "assets/slides/part-b/slide-29.webp"
+      "image": "assets/slides/part-b/slide-29.webp",
+      "narration": "עם סיום תקופת כנסת הגדולה, נפתחה תקופה חדשה בתולדות ישראל — תקופת הדורות הלאחרים, הדורות שיפתחו בתוך עצמם את כל עושר התורה שבעל-פה שקבעה כנסת הגדולה."
     }
   ],
   "quiz": [
